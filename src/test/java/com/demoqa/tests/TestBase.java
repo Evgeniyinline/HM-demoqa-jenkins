@@ -59,6 +59,7 @@ public class TestBase {
         Attach.addVideo();
         if (remote == null || remote.equals("")) {
         } else {
+            Attach.addVideo();
 
         }
     }
