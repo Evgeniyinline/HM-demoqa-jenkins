@@ -28,6 +28,8 @@ public class TestBase {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
 
         Configuration.browserCapabilities = capabilities;
         Configuration.baseUrl = baseUrl;
@@ -43,8 +45,6 @@ public class TestBase {
                     + PASSWORD_REMOTE + "@"
                     + remote;
 
-            capabilities.setCapability("enableVNC", true);
-            capabilities.setCapability("enableVideo", true);
         }
 
         if (browserVersion != null) {
@@ -57,10 +57,10 @@ public class TestBase {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
-
-        if (remote == null || remote.equals("")) {
-        } else {
-            Attach.addVideo();
-        }
+        Attach.addVideo();
+//        if (remote == null || remote.equals("")) {
+//        } else {
+//
+//        }
     }
 }
