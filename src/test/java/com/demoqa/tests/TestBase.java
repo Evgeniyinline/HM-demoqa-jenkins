@@ -14,6 +14,15 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 @ExtendWith({BrowserPerTestStrategyExtension.class})
 public class TestBase {
 
+    public static final String
+            remote = System.getProperty("selenoid.autotests.cloud/wd/hub"),
+            browserName = System.getProperty("browser_name", "chrome"),
+            browserVersion = System.getProperty("browser_version"),
+            browserSize = System.getProperty("browser_size", "800x800"),
+            LOGIN_REMOTE = "user1",
+            PASSWORD_REMOTE = "1234",
+            baseUrl = "https://demoqa.com";
+
     @BeforeAll
     static void configure() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
@@ -21,24 +30,24 @@ public class TestBase {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         Configuration.browserCapabilities = capabilities;
-        Configuration.baseUrl = TestData.baseUrl;
-        Configuration.browser = TestData.browserName;
-        Configuration.browserVersion = TestData.browserVersion;
-        Configuration.browserSize = TestData.browserSize;
+        Configuration.baseUrl = TestBase.baseUrl;
+        Configuration.browser = TestBase.browserName;
+        Configuration.browserVersion = TestBase.browserVersion;
+        Configuration.browserSize = TestBase.browserSize;
 
-        if (TestData.remote == null || TestData.remote.equals("")) {
+        if (TestBase.remote == null || TestBase.remote.equals("")) {
         } else {
             Configuration.remote = "https://"
-                    + TestData.LOGIN_REMOTE + ":"
-                    + TestData.PASSWORD_REMOTE + "@"
-                    + TestData.remote;
+                    + TestBase.LOGIN_REMOTE + ":"
+                    + TestBase.PASSWORD_REMOTE + "@"
+                    + TestBase.remote;
 
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
         }
 
-        if (TestData.browserVersion != null) {
-            Configuration.browserVersion = TestData.browserVersion;
+        if (TestBase.browserVersion != null) {
+            Configuration.browserVersion = TestBase.browserVersion;
         }
     }
 
@@ -48,7 +57,7 @@ public class TestBase {
         Attach.pageSource();
         Attach.browserConsoleLogs();
 
-        if (TestData.remote == null || TestData.remote.equals("")) {
+        if (TestBase.remote == null || TestBase.remote.equals("")) {
         } else {
             Attach.addVideo();
         }

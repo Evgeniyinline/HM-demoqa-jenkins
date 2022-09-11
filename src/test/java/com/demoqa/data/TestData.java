@@ -22,14 +22,7 @@ public class TestData {
             state = "Haryana",
             city = "Karnal";
 
-    public static final String
-            remote = System.getProperty("selenoid.autotests.cloud/wd/hub"),
-            browserName = System.getProperty("browser_name", "chrome"),
-            browserVersion = System.getProperty("browser_version"),
-            browserSize = System.getProperty("browser_size", "800x800"),
-            LOGIN_REMOTE = "user1",
-            PASSWORD_REMOTE = "1234",
-            baseUrl = "https://demoqa.com";
+
 
 
 }
