@@ -30,24 +30,25 @@ public class TestBase {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         Configuration.browserCapabilities = capabilities;
-        Configuration.baseUrl = TestBase.baseUrl;
-        Configuration.browser = TestBase.browserName;
-        Configuration.browserVersion = TestBase.browserVersion;
-        Configuration.browserSize = TestBase.browserSize;
+        Configuration.baseUrl = baseUrl;
+        Configuration.browser = browserName;
+        Configuration.browserVersion = browserVersion;
+        Configuration.browserSize = browserSize;
+        Configuration.remote = remote;
 
-        if (TestBase.remote == null || TestBase.remote.equals("")) {
+        if (remote == null || remote.equals("")) {
         } else {
             Configuration.remote = "https://"
-                    + TestBase.LOGIN_REMOTE + ":"
-                    + TestBase.PASSWORD_REMOTE + "@"
-                    + TestBase.remote;
+                    + LOGIN_REMOTE + ":"
+                    + PASSWORD_REMOTE + "@"
+                    + remote;
 
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
         }
 
-        if (TestBase.browserVersion != null) {
-            Configuration.browserVersion = TestBase.browserVersion;
+        if (browserVersion != null) {
+            Configuration.browserVersion = browserVersion;
         }
     }
 
@@ -57,7 +58,7 @@ public class TestBase {
         Attach.pageSource();
         Attach.browserConsoleLogs();
 
-        if (TestBase.remote == null || TestBase.remote.equals("")) {
+        if (remote == null || remote.equals("")) {
         } else {
             Attach.addVideo();
         }
