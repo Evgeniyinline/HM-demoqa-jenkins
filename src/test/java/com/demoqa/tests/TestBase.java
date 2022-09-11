@@ -34,7 +34,7 @@ public class TestBase {
         Configuration.browser = browserName;
         Configuration.browserVersion = browserVersion;
         Configuration.browserSize = browserSize;
-        Configuration.remote = "";
+        Configuration.remote ="https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         if (remote == null || remote.equals("")) {
         } else {
