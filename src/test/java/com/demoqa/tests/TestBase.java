@@ -16,7 +16,6 @@ import java.util.Locale;
 
 import static com.demoqa.utils.RandomUtils.*;
 
-@ExtendWith({BrowserPerTestStrategyExtension.class})
 public class TestBase {
 
     Faker faker = new Faker(new Locale("en"));
@@ -43,8 +42,8 @@ public class TestBase {
 
         Configuration.browserCapabilities = capabilities;
         Configuration.baseUrl = TestData.baseUrl;
-//        Configuration.browser = TestData.browserName;
-//        Configuration.browserVersion = TestData.browserVersion;
+        Configuration.browser = TestData.browserName;
+        Configuration.browserVersion = TestData.browserVersion;
         Configuration.browserSize = TestData.browserSize;
 
 
@@ -59,9 +58,9 @@ public class TestBase {
             capabilities.setCapability("enableVideo", true);
         }
 
-//        if (TestData.browserVersion != null) {
-//            Configuration.browserVersion = TestData.browserVersion;
-//        }
+        if (TestData.browserVersion != null) {
+            Configuration.browserVersion = TestData.browserVersion;
+        }
     }
 
     @AfterEach
