@@ -42,8 +42,9 @@ public class TestBase {
 
         Configuration.browserCapabilities = capabilities;
         Configuration.baseUrl = TestData.baseUrl;
-        Configuration.browser = TestData.browserName;
-        Configuration.browserVersion = TestData.browserVersion;
+        Configuration.remote = "";
+//        Configuration.browser = TestData.browserName;
+//        Configuration.browserVersion = TestData.browserVersion;
         Configuration.browserSize = TestData.browserSize;
 
 
@@ -58,9 +59,9 @@ public class TestBase {
             capabilities.setCapability("enableVideo", true);
         }
 
-        if (TestData.browserVersion != null) {
-            Configuration.browserVersion = TestData.browserVersion;
-        }
+//        if (TestData.browserVersion != null) {
+//            Configuration.browserVersion = TestData.browserVersion;
+//        }
     }
 
     @AfterEach
