@@ -15,7 +15,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class TestBase {
 
     public static final String
-            remote = System.getProperty("selenoid.autotests.cloud/wd/hub"),
+            remote = System.getProperty("remote"),
             browserName = System.getProperty("browser_name", "chrome"),
             browserVersion = System.getProperty("browser_version"),
             browserSize = System.getProperty("browser_size", "800x800"),
@@ -36,7 +36,6 @@ public class TestBase {
         Configuration.browser = browserName;
         Configuration.browserVersion = browserVersion;
         Configuration.browserSize = browserSize;
-        Configuration.remote ="https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         if (remote == null || remote.equals("")) {
         } else {
@@ -58,9 +57,9 @@ public class TestBase {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
-//        if (remote == null || remote.equals("")) {
-//        } else {
-//
-//        }
+        if (remote == null || remote.equals("")) {
+        } else {
+
+        }
     }
 }
