@@ -34,7 +34,7 @@ public class TestBase {
         Configuration.browser = browserName;
         Configuration.browserVersion = browserVersion;
         Configuration.browserSize = browserSize;
-        Configuration.remote = remote;
+        Configuration.remote = "";
 
         if (remote == null || remote.equals("")) {
         } else {
