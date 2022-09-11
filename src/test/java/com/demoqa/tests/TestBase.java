@@ -29,7 +29,7 @@ public class TestBase {
     @BeforeAll
     static void configure() {
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browser = "chrome";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         Configuration.browserSize = "1080x1080";
 
     }
