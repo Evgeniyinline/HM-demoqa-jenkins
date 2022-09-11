@@ -25,6 +25,7 @@ public class TestBase {
         Configuration.browser = TestData.browserName;
         Configuration.browserVersion = TestData.browserVersion;
         Configuration.browserSize = TestData.browserSize;
+        Configuration.remote = "selenoid.autotests.cloud/wd/hub";
 
         if (TestData.remote == null || TestData.remote.equals("")) {
         } else {
