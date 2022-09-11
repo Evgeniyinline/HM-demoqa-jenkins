@@ -35,10 +35,6 @@ public class TestBase {
     @BeforeAll
     static void configure() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        Configuration.browserSize = "1080x1080";
-
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         Configuration.browserCapabilities = capabilities;
