@@ -41,28 +41,38 @@ public class TestBase {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
+//        capabilities.setCapability("browserName", "chrome");
+//        capabilities.setCapability("browserVersion", "100.0");
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
 
         Configuration.browserCapabilities = capabilities;
-        Configuration.baseUrl = TestData.baseUrl;
-        Configuration.browser = TestData.browserName;
-        Configuration.browserVersion = TestData.browserVersion;
-        Configuration.browserSize = TestData.browserSize;
-
-        if (TestData.remote == null || TestData.remote.equals("")) {
-        } else {
-            Configuration.remote = "https://"
-                    + TestData.LOGIN_REMOTE + ":"
-                    + TestData.PASSWORD_REMOTE + "@"
-                    + TestData.remote;
-
-            capabilities.setCapability("enableVNC", true);
-            capabilities.setCapability("enableVideo", true);
-        }
-
-        if (TestData.browserVersion != null) {
-            Configuration.browserVersion = TestData.browserVersion;
-        }
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browserSize = "1920x1080";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
+
+//        Configuration.browserCapabilities = capabilities;
+//        Configuration.baseUrl = TestData.baseUrl;
+//        Configuration.browser = TestData.browserName;
+//        Configuration.browserVersion = TestData.browserVersion;
+//        Configuration.browserSize = TestData.browserSize;
+//
+//        if (TestData.remote == null || TestData.remote.equals("")) {
+//        } else {
+//            Configuration.remote = "https://"
+//                    + TestData.LOGIN_REMOTE + ":"
+//                    + TestData.PASSWORD_REMOTE + "@"
+//                    + TestData.remote;
+//
+//            capabilities.setCapability("enableVNC", true);
+//            capabilities.setCapability("enableVideo", true);
+//        }
+//
+//        if (TestData.browserVersion != null) {
+//            Configuration.browserVersion = TestData.browserVersion;
+//        }
+//    }
 
     @AfterEach
     void addAttachments() {
@@ -70,9 +80,8 @@ public class TestBase {
         Attach.pageSource();
         Attach.browserConsoleLogs();
 
-        if (TestData.remote == null || TestData.remote.equals("")) {
-        } else {
-            Attach.addVideo();
-        }
+//        if (TestData.remote == null || TestData.remote.equals("")) {
+//        } else {
+        Attach.addVideo();
     }
 }
