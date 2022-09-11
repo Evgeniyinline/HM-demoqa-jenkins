@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-@ExtendWith({BrowserPerTestStrategyExtension.class})
+
 public class TestBase {
 
     public static final String
