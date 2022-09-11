@@ -21,7 +21,8 @@ public class TestBase {
             browserSize = System.getProperty("browser_size", "800x800"),
             LOGIN_REMOTE = "user1",
             PASSWORD_REMOTE = "1234",
-            baseUrl = "https://demoqa.com";
+            baseUrl = "https://demoqa.com",
+            selenoidURL = "selenoid.autotests.cloud/wd/hub";
 
     @BeforeAll
     static void configure() {
@@ -42,7 +43,7 @@ public class TestBase {
             Configuration.remote = "https://"
                     + LOGIN_REMOTE + ":"
                     + PASSWORD_REMOTE + "@"
-                    + remote;
+                    + selenoidURL;
 
         }
 
