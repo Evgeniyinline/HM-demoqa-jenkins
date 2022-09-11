@@ -2,9 +2,13 @@ package com.demoqa.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.demoqa.data.TestData;
 import com.github.javafaker.Faker;
+import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Locale;
 
@@ -35,6 +39,41 @@ public class TestBase {
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         Configuration.browserSize = "1080x1080";
 
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+
+        Configuration.browserCapabilities = capabilities;
+        Configuration.baseUrl = TestData.baseUrl;
+        Configuration.browser = TestData.browserName;
+        Configuration.browserVersion = TestData.browserVersion;
+        Configuration.browserSize = TestData.browserSize;
+
+        if (TestData.remote == null || TestData.remote.equals("")) {
+        } else {
+            Configuration.remote = "https://"
+                    + TestData.LOGIN_REMOTE + ":"
+                    + TestData.PASSWORD_REMOTE + "@"
+                    + TestData.remote;
+
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", true);
+        }
+
+        if (TestData.browserVersion != null) {
+            Configuration.browserVersion = TestData.browserVersion;
+        }
+    }
+
+
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+
+        if (TestData.remote == null || TestData.remote.equals("")) {
+        } else {
+            Attach.addVideo();
+        }
     }
 
 }
