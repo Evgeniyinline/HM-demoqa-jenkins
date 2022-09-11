@@ -15,7 +15,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class TestBase {
 
     public static final String
-            remote = System.getProperty("remote"),
+            remote = System.getProperty("REMOTE"),
             browserName = System.getProperty("browser_name", "chrome"),
             browserVersion = System.getProperty("browser_version"),
             browserSize = System.getProperty("browser_size", "800x800"),
