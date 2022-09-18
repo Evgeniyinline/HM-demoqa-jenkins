@@ -1,0 +1,10 @@
+5762218710:AAG2AlTB7-3-jNlPnwM9N0z12BVqWNqfbA8
+-1001606016934
+
+https://api.telegram.org/bot5762218710:AAG2AlTB7-3-jNlPnwM9N0z12BVqWNqfbA8/getUpdates
+
+curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "-1001606016934", "text": "проверка 2", "disable_notification": true}' https://api.telegram.org/bot5762218710:AAG2AlTB7-3-jNlPnwM9N0z12BVqWNqfbA8/sendMessage
+
+
+
+java "-DconfigFile=notifications/telegram.json" -jar notifications/allure-notifications-4.2.1.jar
